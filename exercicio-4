@@ -1,0 +1,11 @@
+# Exercício 4
+
+faturamento_mensal = {'SP': 67836.43, 'RJ': 36678.66, 'MG': 29229.88, 'ES': 27165.48, 'Outros': 19849.53}
+
+mensal = 0
+for chave,valor in faturamento_mensal.items():
+    mensal += valor
+
+for chave, valor in faturamento_mensal.items():
+    rep = valor / mensal
+    print(f"Representatividade: {chave} - {round(rep*100, 2)}%")
