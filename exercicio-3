@@ -1,0 +1,45 @@
+import json
+
+arquivo_dados = 'dados.json'
+
+# Abrindo e lendo o arquivo JSON 
+with open(arquivo_dados, 'r') as arquivo: 
+    dados = json.load(arquivo)
+
+
+# Menor valor de faturamento ocorrido em um dia do mês
+lista = []
+for i in dados:
+    if i.get('valor') > 0:
+        lista.append(i.get('valor'))
+    lista.sort()
+
+print(f"Menor valor de faturamento ocorrido em um dia do mês: R${round(lista[0], 2)}")
+
+# Maior valor de faturamento ocorrido em um dia do mês
+lista = []  
+
+for i in dados:
+    if i.get('valor') > 0:
+        lista.append(i.get('valor'))
+    lista.sort()
+
+print(f"Menor valor de faturamento ocorrido em um dia do mês: R${round(lista[-1], 2)}")
+
+# Número de dias no mês em que o valor de faturamento diário foi superior à média mensal. (retirar dias sem faturamento)
+
+media = 0
+soma = 0
+contador = 0
+dias_faturamento_superior = 0
+for i in dados:
+    if i.get('valor') > 0:
+        contador +=1
+        soma += i.get('valor')
+
+media = soma / contador
+for i in dados:
+    if i.get('valor') > media:
+        dias_faturamento_superior +=1
+
+print(f"Número de dias faturamento superior a média: {dias_faturamento_superior}")
