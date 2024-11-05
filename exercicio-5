@@ -1,0 +1,14 @@
+def inverter_string(s):
+    lista_caracteres = list(s)
+    lista_invertida = []
+    string_invertida = ""
+
+    for i in s:
+        lista_invertida.append(lista_caracteres.pop())
+
+    return string_invertida.join(lista_invertida)
+
+# Entrada do usuário
+string_original = input("Digite a string que deseja inverter: ")
+
+print("String invertida:", inverter_string(string_original))
